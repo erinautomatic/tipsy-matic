@@ -1,0 +1,135 @@
+$tipsy-bg-color : rgba(black, 0.8);
+
+.tipsy {
+  font-size: 11px;
+  line-height: 1.5;
+  position: absolute;
+  padding: 5px;
+  z-index: 100000;
+  @include text-shadow(none);
+  &.animate .tipsy-animate { opacity: 1; }
+}
+
+.animate {
+  &.tipsy-n, &.tipsy-nw, &.tipsy-ne  {
+    .tipsy-animate { margin-top: -6px; }
+  }
+  &.tipsy-s, &.tipsy-sw, &.tipsy-se  {
+    .tipsy-animate { margin-top: 6px }
+  }
+  &.tipsy-e .tipsy-animate { margin-left: 6px; }
+  &.tipsy-w .tipsy-animate { margin-left: -6px; }
+}
+
+.tipsy-animate {
+  position: relative;
+  opacity: 0;
+  margin: 0;
+  @include transition(margin 300ms ease, opacity 300ms ease);
+}
+
+.tipsy-inner {
+  background-color: $tipsy-bg-color;
+  color: #FFF;
+  max-width: 200px;
+  padding: 4px 8px 5px;
+  text-align: center;
+}
+
+/* Rounded corners */
+.tipsy-inner { @include border-radius(3px); }
+
+/* Uncomment for shadow */
+/*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
+.tipsy-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border: 5px dashed #000;
+}
+
+/* Rules to colour arrows */
+.tipsy-arrow-n { border-bottom-color: $tipsy-bg-color; }
+.tipsy-arrow-s { border-top-color: $tipsy-bg-color; }
+.tipsy-arrow-e { border-left-color: $tipsy-bg-color; }
+.tipsy-arrow-w { border-right-color: $tipsy-bg-color; }
+
+// Arrow positioning
+.tipsy-arrow {
+  .tipsy-n & {
+    top: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-bottom-style: solid;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .tipsy-nw & {
+    top: -5px;
+    left: 10px;
+    border-bottom-style: solid;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .tipsy-ne & {
+    top: -5px;
+    right: 10px;
+    border-bottom-style: solid;
+    border-top: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .tipsy-s & {
+    bottom: -5px;
+    left: 50%;
+    margin-left: -5px;
+    border-top-style: solid;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .tipsy-sw & {
+    bottom: -5px;
+    left: 10px;
+    border-top-style: solid;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .tipsy-se & {
+    bottom: -5px;
+    right: 10px;
+    border-top-style: solid;
+    border-bottom: none;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+
+  .tipsy-e & {
+    right: -5px;
+    top: 50%;
+    margin-top: -5px;
+    border-left-style: solid;
+    border-right: none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .tipsy-w & {
+    left: -5px;
+    top: 50%;
+    margin-top: -5px;
+    border-right-style: solid;
+    border-left: none;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+  }
+}
